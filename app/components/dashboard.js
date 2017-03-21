@@ -7,16 +7,6 @@ import globalStyles from '../styles';
 
 import ListItem from './item';
 
-const DashboardItem = (props) =>
-  <TouchableOpacity
-    activeOpacity={0.8}
-    onPress={props.onPress}
-    style={{padding: 20, borderBottomWidth: 1, borderBottomColor: '#e0e0e0'}}
-  >
-    <Text style={{fontSize: 20, fontWeight: 'bold'}}>{props.label}</Text>
-  </TouchableOpacity>;
-
-
 class Dashboard extends Component {
 
   _getItems() {
@@ -28,7 +18,8 @@ class Dashboard extends Component {
           onPress={() => Actions.Detail({
             label: item.label,
             identifier: item.identifier,
-            unit: item.unit
+            unit: item.unit,
+            normalize: item.normalize
           })}
         />
       )
@@ -46,15 +37,26 @@ class Dashboard extends Component {
 
 module.exports = Dashboard;
 
+const DashboardItem = (props) =>
+  <TouchableOpacity
+    activeOpacity={0.8}
+    onPress={props.onPress}
+    style={{padding: 20, borderBottomWidth: 1, borderBottomColor: '#e0e0e0'}}
+  >
+    <Text style={{fontSize: 20, fontWeight: 'bold'}}>{props.label}</Text>
+  </TouchableOpacity>;
+
 const healthData = [
   {
     label: 'Weight',
     identifier: 'weight',
-    unit: 'grams'
+    unit: 'gram',
+    normalize: (val) => (val/1000).toFixed(2).toString() + ' kg'
   },
   {
     label: 'Height',
     identifier: 'height',
-    unit: 'meters'
+    unit: 'meter',
+    normalize: (val) => val.toFixed(2).toString() + ' m'
   },
 ]

@@ -1,33 +1,62 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
+import { Component } from 'reflux';
+
+import moment from 'moment';
+import HealthKit from 'react-native-apple-healthkit';
 
 import globalStyles from '../styles';
-
 import Item from './item';
+import DeviceStore from '../stores/device';
+import DeviceActions from '../actions/device';
 
 class Detail extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { refreshing: false };
+    this.store = DeviceStore;
   }
 
-  _onRefresh() {
-    this.setState({ refreshing: true });
+  componentDidMount() {
+    this._getData();
+  }
+
+  _getData() {
+    DeviceActions.get(this.props.identifier, new Date(2016,1,1).toISOString(), this.props.unit);
+  }
+
+  _getSamples() {
     const that = this;
-    setTimeout(() => { that.setState({ refreshing: false }); }, 1000);
+    return this.state.samples.map((item, i) => {
+      return (
+        <Item
+          key={'sample_' + i}
+          label={moment(item.startDate).format('ll')}
+          value={that.props.normalize(item.value)}
+        />
+      );
+    });
   }
 
   _refreshControl() {
     return (
       <RefreshControl
-        refreshing={this.state.refreshing}
-        onRefresh={this._onRefresh.bind(this)}
+        refreshing={this.state.fetching}
+        onRefresh={this._getData()}
       />
     );
   }
 
   render() {
+
+    if (this.state.err !== null) {
+      return (
+        <View style={[globalStyles.sceneContainer]}>
+          <Text>Error getting Data!</Text>
+        </View>
+      );
+    }
+
     return (
       <View style={[globalStyles.sceneContainer]}>
         <View style={styles.container}>
@@ -41,7 +70,7 @@ class Detail extends Component {
             </View>
           </View>
           <ScrollView style={styles.list} refreshControl={this._refreshControl()}>
-            <Item label="12/12/2017" value="123.2" />
+            {this._getSamples()}
           </ScrollView>
         </View>
       </View>

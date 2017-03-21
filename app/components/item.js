@@ -20,7 +20,7 @@ module.exports = Item;
 Item.propTypes = {
   label: React.PropTypes.string,
   value: React.PropTypes.string,
-  // onPress: React.PropTypes.func,
+  onPress: React.PropTypes.func,
 }
 
 Item.defaultProps = {

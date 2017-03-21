@@ -7,10 +7,12 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"moment": "^2.18.0",
 		"react": "~15.4.1",
 		"react-native": "0.39.2",
 		"react-native-apple-healthkit": "^0.2.1",
-		"react-native-router-flux": "^3.38.0"
+		"react-native-router-flux": "^3.38.0",
+		"reflux": "^6.4.1"
 	},
 	"devDependencies": {
 		"babel-jest": "19.0.0",
