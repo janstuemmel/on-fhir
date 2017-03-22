@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppSpec should initialize App (Router) 1`] = `
+<Router
+  barButtonIconStyle={
+    Object {
+      "tintColor": "#FFFFFF",
+    }
+  }
+  barButtonTextStyle={
+    Object {
+      "color": "#FFFFFF",
+    }
+  }
+  navigationBarStyle={
+    Object {
+      "backgroundColor": "#D81B60",
+      "borderBottomColor": "#AD1457",
+    }
+  }
+  titleStyle={
+    Object {
+      "color": "#FFFFFF",
+    }
+  }
+>
+  <_class
+    unmountScenes={true}
+  >
+    <_class
+      component={[Function]}
+      initial={true}
+      title="OnFhir"
+    />
+    <_class
+      component={[Function]}
+      title="OnFhir"
+    />
+  </_class>
+</Router>
+`;
+
+exports[`AppSpec should not initialize App (Router), HealthKit unavailable 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "fontSize": 30,
+      }
+    }
+  >
+    Error
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "fontSize": 20,
+      }
+    }
+  >
+    HealthKit access denied!
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "fontSize": 15,
+      }
+    }
+  >
+    Give this app HealthKit permissions!
+  </Text>
+</View>
+`;

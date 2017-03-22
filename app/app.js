@@ -27,7 +27,6 @@ class App extends Component {
     let that = this;
     HealthKit.initHealthKit(hkOptions, (err, res) => {
       if (err) {
-        console.log('error initializing healthkit', err);
         return;
       }
       that.setState({ hkAvailable: true });
