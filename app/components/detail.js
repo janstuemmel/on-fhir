@@ -22,6 +22,7 @@ class Detail extends Component {
   }
 
   _getData() {
+    this.setState({ fetching: true });
     DeviceActions.get(this.props.identifier, new Date(2016,1,1).toISOString(), this.props.unit);
   }
 
@@ -42,7 +43,7 @@ class Detail extends Component {
     return (
       <RefreshControl
         refreshing={this.state.fetching}
-        onRefresh={this._getData()}
+        onRefresh={this._getData.bind(this)}
       />
     );
   }

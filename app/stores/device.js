@@ -6,7 +6,7 @@ class DeviceStore extends Store {
 
   constructor() {
     super();
-    this.state = { samples: [], fetching: true, err: null };
+    this.state = { samples: [], fetching: false, err: null };
     this.listenables = DeviceActions;
   }
 

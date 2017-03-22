@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailSpec should initialize Detail 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "marginTop": 64,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#AD1457",
+          "flex": 0.4,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 0.5,
+            "flexDirection": "column",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "fontSize": 30,
+            }
+          }
+        >
+          Weight
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 0.5,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Button
+          name="Send to server"
+          style={
+            Object {
+              "flex": 0.5,
+            }
+          }
+        />
+        <Button
+          name="Sync with server"
+          style={
+            Object {
+              "flex": 0.5,
+            }
+          }
+        />
+      </View>
+    </View>
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          onRefresh={[Function]}
+          refreshing={false}
+        />
+      }
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 0.6,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`DetailSpec should initialize Detail with items 1`] = `
+Array [
+  <Item
+    label="Feb 1, 2017"
+    onPress={[Function]}
+    value="123"
+/>,
+  <Item
+    label="Feb 1, 2017"
+    onPress={[Function]}
+    value="321"
+/>,
+]
+`;
+
+exports[`DetailSpec should initialize Detail without items 1`] = `undefined`;
