@@ -50,10 +50,18 @@ class Detail extends Component {
 
   render() {
 
-    if (this.state.err !== null) {
+    if (this.state.err) {
       return (
         <View style={[globalStyles.sceneContainer]}>
           <Text>Error getting Data!</Text>
+        </View>
+      );
+    }
+
+    if (this.state.samples.length < 1) {
+      return (
+        <View style={[globalStyles.sceneContainer]}>
+          <Text>No data available!</Text>
         </View>
       );
     }

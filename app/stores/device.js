@@ -11,12 +11,11 @@ class DeviceStore extends Store {
   }
 
   onGetCompleted(samples) {
-    this.setState({ samples: samples, fetching: false })
+    this.setState({ samples: samples, fetching: false, err: null })
   }
 
   onGetFailed(err) {
-    this.setState({ fetching: false, err: err })
-    console.log(err);
+    this.setState({ samples: [], fetching: false, err: err })
   }
 }
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DetailSpec should initialize Detail 1`] = `
+exports[`DetailSpec should render items 1`] = `
 <View
   style={
     Array [
@@ -93,24 +93,62 @@ exports[`DetailSpec should initialize Detail 1`] = `
           "flex": 0.6,
         }
       }
-    />
+    >
+      <Item
+        label="Feb 1, 2017"
+        onPress={[Function]}
+        value="123"
+      />
+      <Item
+        label="Feb 1, 2017"
+        onPress={[Function]}
+        value="321"
+      />
+    </ScrollView>
   </View>
 </View>
 `;
 
-exports[`DetailSpec should initialize Detail with items 1`] = `
-Array [
-  <Item
-    label="Feb 1, 2017"
-    onPress={[Function]}
-    value="123"
-/>,
-  <Item
-    label="Feb 1, 2017"
-    onPress={[Function]}
-    value="321"
-/>,
-]
+exports[`DetailSpec should render: data error 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "marginTop": 64,
+      },
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Error getting Data!
+  </Text>
+</View>
 `;
 
-exports[`DetailSpec should initialize Detail without items 1`] = `undefined`;
+exports[`DetailSpec should render: data unavailable 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "marginTop": 64,
+      },
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    No data available!
+  </Text>
+</View>
+`;
