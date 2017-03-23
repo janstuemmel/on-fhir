@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/janstuemmel/on-fhir.svg?branch=master)](https://travis-ci.org/janstuemmel/on-fhir)
+
 # OnFhir
 
 An iOS Application for health data exchange via [HealthKit][hk] and [HL7 FHIR][fhir], written with react-native.
