@@ -39,9 +39,6 @@ exports[`DetailSpec should render items 1`] = `
         }
       >
         <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
           style={
             Object {
               "color": "#FFFFFF",
@@ -121,11 +118,7 @@ exports[`DetailSpec should render: data error 1`] = `
     ]
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
+  <Text>
     Error getting Data!
   </Text>
 </View>
@@ -143,11 +136,7 @@ exports[`DetailSpec should render: data unavailable 1`] = `
     ]
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
+  <Text>
     No data available!
   </Text>
 </View>

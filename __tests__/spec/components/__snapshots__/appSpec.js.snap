@@ -51,9 +51,6 @@ exports[`AppSpec should not initialize App (Router), HealthKit unavailable 1`] =
   }
 >
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
     style={
       Object {
         "fontSize": 30,
@@ -63,9 +60,6 @@ exports[`AppSpec should not initialize App (Router), HealthKit unavailable 1`] =
     Error
   </Text>
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
     style={
       Object {
         "fontSize": 20,
@@ -75,9 +69,6 @@ exports[`AppSpec should not initialize App (Router), HealthKit unavailable 1`] =
     HealthKit access denied!
   </Text>
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
     style={
       Object {
         "fontSize": 15,
