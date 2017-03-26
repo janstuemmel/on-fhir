@@ -6,7 +6,7 @@ jest.mock('react-native-apple-healthkit', () => {
 
 import React from 'react';
 
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import enzymeToJson from 'enzyme-to-json';
 
 import HealthKit from 'react-native-apple-healthkit';
@@ -25,14 +25,11 @@ describe('DetailSpec', () => {
     jest.resetAllMocks();
   });
 
-  it('should have state with samples', () => {
 
-      // given
-      HealthKit.getWeightSamples.mockImplementationOnce((opt, cb) => {
-        cb(null, TEST_SAMPLES);
-      });
+  it('should have called getWeightSamples', () => {
 
-      const wrapper = shallow(
+      // when
+      const wrapper = mount(
         <Detail
           label="Weight"
           identifier="weight"
@@ -41,8 +38,32 @@ describe('DetailSpec', () => {
         />
       );
 
+      // then
+      expect(HealthKit.getWeightSamples).toHaveBeenCalledWith(expect.objectContaining({
+          startDate: expect.any(String),
+          unit: expect.any(String)
+        }),
+        expect.any(Function)
+      );
+  });
+
+
+  it('should have state with samples', () => {
+
+      // given
+      HealthKit.getWeightSamples.mockImplementationOnce((opt, cb) => {
+        cb(null, TEST_SAMPLES);
+      });
+
       // when
-      wrapper.instance().componentDidMount();
+      const wrapper = mount(
+        <Detail
+          label="Weight"
+          identifier="weight"
+          unit="gram"
+          normalize={(val) => val}
+        />
+      );
 
       // then
       expect(wrapper.state()).toMatchObject({ samples: TEST_SAMPLES });
@@ -56,7 +77,8 @@ describe('DetailSpec', () => {
         cb(true, null);
       });
 
-      const wrapper = shallow(
+      // when
+      const wrapper = mount(
         <Detail
           label="Weight"
           identifier="weight"
@@ -65,10 +87,8 @@ describe('DetailSpec', () => {
         />
       );
 
-      // when
-      wrapper.instance().componentDidMount();
-
       // then
+      expect(HealthKit.getWeightSamples).toHaveBeenCalled();
       expect(wrapper.state()).toMatchObject({ err: true });
   });
 
