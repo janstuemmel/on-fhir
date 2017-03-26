@@ -89,6 +89,17 @@ class Detail extends Component {
 
 module.exports = Detail;
 
+Detail.propTypes = {
+  label: React.PropTypes.string.isRequired,
+  identifier: React.PropTypes.string.isRequired,
+  unit: React.PropTypes.string,
+  normalize: React.PropTypes.func,
+}
+
+Detail.defaultProps = {
+  normalize: val => val
+};
+
 const Button = (props) =>
   <TouchableOpacity
     activeOpacity={0.7}
@@ -107,6 +118,15 @@ const Button = (props) =>
         textAlign: 'center'
       }}>{props.name}</Text>
   </TouchableOpacity>;
+
+
+Button.propTypes = {
+  name: React.PropTypes.string.isRequired,
+}
+
+Button.defaultProps = {
+  onPress: () => {}
+}
 
 const styles = StyleSheet.create({
   container: {

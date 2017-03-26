@@ -61,6 +61,7 @@ exports[`DetailSpec should render items 1`] = `
       >
         <Button
           name="Send to server"
+          onPress={[Function]}
           style={
             Object {
               "flex": 0.5,
@@ -69,6 +70,7 @@ exports[`DetailSpec should render items 1`] = `
         />
         <Button
           name="Sync with server"
+          onPress={[Function]}
           style={
             Object {
               "flex": 0.5,
