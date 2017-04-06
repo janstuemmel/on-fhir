@@ -7,6 +7,8 @@ import globalStyles from '../styles';
 
 import ListItem from './item';
 
+const healthData = require('../sampleData');
+
 class Dashboard extends Component {
 
   _getItems() {
@@ -19,7 +21,9 @@ class Dashboard extends Component {
             label: item.label,
             identifier: item.identifier,
             unit: item.unit,
-            normalize: item.normalize
+            normalize: item.normalize,
+            getFhirDoc: item.getFhirDoc,
+            getFhirObject: item.getFhirObject
           })}
         />
       )
@@ -45,18 +49,3 @@ const DashboardItem = (props) =>
   >
     <Text style={{fontSize: 20, fontWeight: 'bold'}}>{props.label}</Text>
   </TouchableOpacity>;
-
-const healthData = [
-  {
-    label: 'Weight',
-    identifier: 'weight',
-    unit: 'gram',
-    normalize: (val) => (val/1000).toFixed(2).toString() + ' kg'
-  },
-  {
-    label: 'Height',
-    identifier: 'height',
-    unit: 'meter',
-    normalize: (val) => val.toFixed(2).toString() + ' m'
-  },
-]

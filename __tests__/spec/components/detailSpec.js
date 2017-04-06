@@ -20,11 +20,34 @@ const TEST_SAMPLES = [
 
 describe('DetailSpec', () => {
 
-  beforeEach(() => {
-    jest.resetModules();
-    jest.resetAllMocks();
-  });
+  // afterEach(() => {
+  //   jest.resetModules();
+  //   jest.resetAllMocks();
+  //   jest.resetAllMocks();
+  // });
 
+  it('should call componentDidMount', () => {
+
+    // given
+    var spy = jest.spyOn(Detail.prototype, 'componentDidMount');
+
+    // when
+    const wrapper = mount(
+      <Detail
+        label="Weight"
+        identifier="weight"
+        unit="gram"
+        normalize={(val) => val}
+      />
+    );
+
+    // then
+    expect(spy).toHaveBeenCalled();
+
+    // after
+    spy.mockReset();
+    spy.mockRestore();
+  });
 
   it('should have called getWeightSamples', () => {
 
@@ -88,7 +111,6 @@ describe('DetailSpec', () => {
       );
 
       // then
-      expect(HealthKit.getWeightSamples).toHaveBeenCalled();
       expect(wrapper.state()).toMatchObject({ err: true });
   });
 

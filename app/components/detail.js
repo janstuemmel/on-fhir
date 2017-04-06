@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import { Component } from 'reflux';
 
+import { forEach } from 'lodash';
+
 import moment from 'moment';
 import HealthKit from 'react-native-apple-healthkit';
 
@@ -9,6 +11,7 @@ import globalStyles from '../styles';
 import Item from './item';
 import DeviceStore from '../stores/device';
 import DeviceActions from '../actions/device';
+import ServerActions from '../actions/server';
 
 class Detail extends Component {
 
@@ -48,6 +51,15 @@ class Detail extends Component {
     );
   }
 
+  _sendToServer() {
+
+    var that = this;
+
+    forEach(this.state.samples, function(s) {
+      ServerActions.add(that.props.getFhirObject(s));
+    });
+  }
+
   render() {
 
     if (this.state.err) {
@@ -74,8 +86,7 @@ class Detail extends Component {
               <Text style={styles.headerTextLabel}>{this.props.label}</Text>
             </View>
             <View style={styles.headerButtonContainer}>
-              <Button name="Send to server" style={{ flex: 0.5 }} />
-              <Button name="Sync with server" style={{ flex: 0.5 }} />
+              <Button onPress={this._sendToServer.bind(this)} name="Send to server" style={{ flex: 1 }} />
             </View>
           </View>
           <ScrollView style={styles.list} refreshControl={this._refreshControl()}>
