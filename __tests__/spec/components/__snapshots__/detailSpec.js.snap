@@ -61,7 +61,6 @@ exports[`DetailSpec should render items 1`] = `
       >
         <Button
           name="Send to server"
-          onClick={[Function]}
           onPress={[Function]}
           style={
             Object {
