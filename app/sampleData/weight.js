@@ -1,4 +1,5 @@
 import { Resources, Types } from 'fhir-proof';
+import moment from 'moment';
 
 const { Observation } = Resources,
       { CodeableConcept, Quantity, Coding } = Types;
@@ -35,7 +36,7 @@ module.exports = {
       status: 'final',
       code: code,
       valueQuantity: quantity,
-      effectiveDateTime: new Date(obj.startDate).toISOString()
+      effectiveDateTime: moment(obj.startDate).toISOString()
     });
   },
 
